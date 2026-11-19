@@ -34,6 +34,20 @@
   font-display: swap;
 }
 @font-face {
+  font-family: 'Racing Sans One';
+  src: url('/assets/fonts/RacingSansOne-Regular.ttf') format('truetype');
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Just Another Hand';
+  src: url('/assets/fonts/JustAnotherHand-Regular.ttf') format('truetype');
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
   font-family: 'TAN Nimbus';
   src: url('/assets/fonts/TAN-NIMBUS.woff2') format('woff2');
   font-style: normal;
@@ -69,6 +83,7 @@ p, h1, h2, h3, figure { margin: 0; }
 .visually-hidden, .skip-link:not(:focus) { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
 .skip-link:focus { position: absolute; inset: 18px auto auto 18px; padding: 12px 20px; background: white; color: var(--blue); z-index: 10; }
 .icon { flex: 0 0 auto; width: 28px; height: 28px; }
+.icon-whatsapp { object-fit: contain; }
 
 /* Cabeçalho e identidade visual compartilhada com o Movan. */
 .site-header { position: relative; overflow: clip; }
@@ -87,19 +102,21 @@ p, h1, h2, h3, figure { margin: 0; }
 
 /* Banner principal. */
 .hero { display: grid; grid-template-columns: 0.85fr 1.15fr; align-items: center; min-height: 390px; padding: 16px 24px 26px; gap: 12px; }
-.hero-copy { position: relative; z-index: 1; }
-.hero h1 { font-family: var(--heading-font); font-style: italic; font-size: clamp(2.25rem, 5.125vw, 3.3125rem); font-weight: 800; line-height: 1.06; text-transform: uppercase; letter-spacing: -2px; transform: rotate(-3deg); transform-origin: left center; }
-.hero h1 span { color: var(--yellow); white-space: nowrap; }
-.hero-handwriting { display: table; font-family: 'Segoe Print', 'Bradley Hand', cursive; font-size: 1.5625rem; line-height: 1.5; letter-spacing: 1px; transform: rotate(-4deg); margin: 7px 0 16px 44px; position: relative; }
-.hero-handwriting::after { content: ''; position: absolute; bottom: -12px; left: -28px; right: -16px; height: 12px; border-top: 2px solid var(--yellow); border-radius: 50%; }
-.hero-description { margin: 25px 0 24px 8px; font-size: 1rem; line-height: 1.7; }
-.hero-action { position: relative; width: 290px; }
+.hero-copy { --hero-heading-size: clamp(2.25rem, 5.2vw, 4.375rem); position: relative; z-index: 1; display: flex; flex-direction: column; align-items: flex-start; justify-self: center; width: fit-content; max-width: calc(100% - 0.85em); margin-inline-end: 0.85em; font-size: var(--hero-heading-size); }
+.hero h1 { font-family: 'Racing Sans One', var(--heading-font); font-style: normal; font-size: 1em; font-weight: 400; line-height: 0.95; color: #050505; text-transform: uppercase; letter-spacing: 0; transform: rotate(-3deg); transform-origin: left center; }
+.hero h1 span { display: block; white-space: nowrap; }
+.hero-title-first { padding-left: 0.18em; }
+.hero-title-accent { color: var(--yellow); }
+.hero-handwriting { position: relative; font-family: 'Just Another Hand', 'Segoe Print', cursive; font-size: 1.17em; line-height: 0.72; transform: rotate(-4deg); margin: -0.08em 0 0.3em 0.65em; color: #111; }
+.hero-handwriting::after { content: ''; position: absolute; bottom: -0.2em; left: -0.28em; right: -0.7em; height: 0.15em; border-top: 0.025em solid var(--yellow); border-radius: 50%; }
+.hero-description { margin: 0.7em 0 1.15em 0.75em; font-size: max(0.7rem, 0.3333em); line-height: 1.5; color: #111; }
+.hero-action { display: flex; width: 97%; }
 .button { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 46px; padding: 10px 30px; border-radius: 30px; background: var(--yellow); color: #3e310d; font-size: 1rem; font-weight: 600; transition: background-color 150ms, box-shadow 150ms; }
 .button:hover { background: #ffb815; box-shadow: 0 4px 16px #ffc33a36; }
-.button-whatsapp { min-width: 245px; }
-.button-whatsapp .icon { color: #fff; background: #28c568; border-radius: 50%; width: 27px; height: 27px; padding: 3px; }
+.hero-action .button-whatsapp { width: 100%; min-width: 0; min-height: 44px; padding: 0.5em 1em; gap: 0.5em; border-radius: 999px; font-size: 0.4em; color: #fff; }
+.button-whatsapp .icon { width: 1.6em; height: 1.6em; }
 .doodle-arrow { width: 85px; height: 85px; color: var(--yellow); pointer-events: none; }
-.hero-action > .doodle-arrow { position: absolute; right: -38px; bottom: 0; width: 90px; height: 64px; transform: rotate(-14deg); }
+.hero-arrow { position: absolute; top: 34%; right: -0.85em; width: 1em; height: 42%; color: var(--yellow); pointer-events: none; }
 .hero-visual { align-self: stretch; position: relative; display: grid; align-content: center; min-width: 0; padding: 15px 8px 26px; isolation: isolate; }
 .hero-backdrop { position: absolute; z-index: -1; inset: 10px 0 12px 5px; background: linear-gradient(100deg, #fff 3%, #edf3fb 58%, #e4edf9); border-radius: 5px 64px 5px 5px; }
 .hero-van { position: relative; width: 100%; height: auto; mix-blend-mode: multiply; }
@@ -138,13 +155,17 @@ p, h1, h2, h3, figure { margin: 0; }
 .postcard-caption { display: block; font-family: 'Segoe Print', 'Bradley Hand', cursive; text-align: center; font-size: 0.875rem; line-height: 2; color: var(--blue); }
 .schedule-table-wrap { border: 1px solid var(--yellow); border-radius: 5px; overflow: hidden; }
 .schedule-table { width: 100%; border-collapse: collapse; background: #fffaf4; text-align: center; font-size: 1rem; }
-.schedule-table th { font-size: 0.75rem; color: #71644c; font-weight: 500; padding: 8px 12px; background: #fff2d3; }
-.schedule-table td { padding: 9px 12px; border-top: 1px solid #e0dfda; line-height: 1.5; }
-.schedule-table th + th, .schedule-table td + td { border-left: 1px solid var(--yellow); }
+.schedule-table thead th { font-size: 0.75rem; color: #71644c; font-weight: 500; padding: 8px 6px; background: #fff2d3; }
+.schedule-table td, .schedule-table tbody th { padding: 9px 6px; border-top: 1px solid #e0dfda; line-height: 1.5; }
+.schedule-table tbody th { font-weight: 500; }
+.schedule-table th + th, .schedule-table th + td, .schedule-table td + td { border-left: 1px solid var(--yellow); }
 .schedule-table tr:nth-child(even) { background: #fdf7ef; }
+.panel-note { margin-top: 16px; font-size: 0.75rem; line-height: 1.6; color: #606775; }
+.vacancy-note { text-align: center; }
 
 /* Vagas. */
-.vacancies-panel { padding-bottom: 23px; }
+.vacancies-panel { display: flex; flex-direction: column; justify-content: space-between; padding-bottom: 23px; }
+.vacancies-panel > .section-heading { align-self: flex-start; }
 .vacancies { display: grid; grid-template-columns: 1fr 1fr; margin: 0 0 8px; text-align: center; }
 .vacancy-period { padding: 0 22px 4px; }
 .vacancy-period + .vacancy-period { border-left: 1px solid #ddcfb0; }
@@ -158,17 +179,16 @@ p, h1, h2, h3, figure { margin: 0; }
 .vacancy-action .arrow-left { left: 0; transform: scaleX(-1) rotate(30deg); }
 .vacancy-action .arrow-right { right: 0; transform: rotate(30deg); }
 
-/* Galeria CSS: os controles nativos selecionam cada placeholder. */
+/* Galeria de fotos: os controles nativos funcionam sem JavaScript. */
 .gallery-panel { position: relative; padding-bottom: 24px; }
 .gallery-heading { display: flex; align-items: flex-start; justify-content: space-between; gap: 20px; }
 .gallery-counter { display: inline-flex; align-items: center; min-height: 35px; color: var(--blue); font-size: 0.8125rem; }
 .count-total { white-space: pre; color: #9b8e72; }
 .gallery-window { overflow: hidden; border: 22px solid var(--yellow-soft); border-radius: 5px; background: white; }
 .gallery-track { display: flex; transition: transform 250ms ease; }
-.gallery-slide { display: flex; flex: 0 0 100%; min-width: 0; min-height: 154px; flex-direction: column; align-items: center; justify-content: center; gap: 7px; padding: 16px; background: #fff; }
-.gallery-slide .icon { width: 32px; height: 32px; color: #dac795; margin-bottom: 3px; }
-.gallery-slide strong { font-size: 0.875rem; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 600; }
-.gallery-slide > span { font-size: 0.6875rem; color: #8e8572; }
+.gallery-slide { display: flex; flex: 0 0 100%; min-width: 0; flex-direction: column; background: #fff; }
+.gallery-slide img { width: 100%; height: auto; aspect-ratio: 17 / 9; object-fit: cover; }
+.gallery-slide figcaption { padding: 10px 12px; font-size: 0.6875rem; line-height: 1.5; text-align: center; color: #606775; }
 .gallery-radio { appearance: none; position: absolute; z-index: 1; bottom: 24px; width: 36px; height: 36px; margin: 0; border-radius: 50%; background: radial-gradient(circle, #fff 0 5px, #a8b3c2 5.5px 6.5px, transparent 7px); cursor: pointer; }
 .gallery-radio:checked { background: radial-gradient(circle, var(--blue) 0 4px, #fff 4.5px 6px, #849bbd 6.5px 7.5px, transparent 8px); }
 .radio-one { right: 104px; }
@@ -196,17 +216,12 @@ p, h1, h2, h3, figure { margin: 0; }
   .brand { padding-top: 12px; }
   .brand::before { width: 550px; }
   .brand-caption { margin-top: 3px; line-height: 1; }
-  .hero h1 { font-size: clamp(2.25rem, 5.6375vw, 3.3125rem); }
 }
 @media (max-width: 1050px) {
   .header-inner { padding-right: 30px; gap: 20px; }
   .main-nav { gap: 24px; }
   .hero { min-height: 355px; padding-inline: 16px; }
-  .hero h1 { font-size: 2.6875rem; }
-  .hero-handwriting { font-size: 1.4375rem; margin-left: 25px; }
-  .hero-description { font-size: 0.9375rem; }
-  .hero-action > .doodle-arrow { right: -8px; }
-  .button-whatsapp { min-width: 220px; }
+  .hero-copy { --hero-heading-size: clamp(1.8rem, 4.7vw, 2.6875rem); }
   .benefits { padding-inline: 22px; gap: 14px; }
   .benefits li { gap: 8px; }
   .benefits strong { font-size: 0.8125rem; }
@@ -233,12 +248,6 @@ p, h1, h2, h3, figure { margin: 0; }
   .page-content { padding-inline: 22px; }
   .main-nav a { min-height: 40px; font-size: 0.8125rem; }
   .hero { min-height: 350px; padding: 15px 8px 24px; grid-template-columns: 1fr 1fr; gap: 0; }
-  .hero h1 { font-size: 2.25rem; letter-spacing: -1.6px; }
-  .hero-handwriting { font-size: 1.25rem; margin-left: 20px; }
-  .hero-description { font-size: 0.875rem; margin-left: 0; }
-  .hero-action { width: 230px; }
-  .button-whatsapp { min-width: 190px; font-size: 0.875rem; }
-  .hero-action > .doodle-arrow { right: -9px; width: 65px; }
   .hero-visual { margin-left: -8px; }
   .hero-backdrop { inset-block: 10px; }
   .hero-caption { font-size: 0.625rem; right: 8px; bottom: 30px; }
@@ -258,7 +267,7 @@ p, h1, h2, h3, figure { margin: 0; }
   .postcard-image { padding: 3px 0; }
   .postcard-caption { font-size: 0.625rem; }
   .postcard-tape { width: 44px; left: calc(50% - 22px); height: 15px; }
-  .schedule-table td { padding-block: 13px; }
+  .schedule-table td, .schedule-table tbody th { padding-block: 13px; }
   .vacancy-period { padding-inline: 8px; }
   .vacancy-period h3 { font-size: 0.875rem; }
   .vacancy-period p span { font-size: 0.6875rem; }
@@ -267,8 +276,6 @@ p, h1, h2, h3, figure { margin: 0; }
   .vacancy-action .arrow-left { left: -14px; }
   .vacancy-action .arrow-right { right: -14px; }
   .gallery-window { border-width: 14px; }
-  .gallery-slide { min-height: 163px; padding-inline: 8px; }
-  .gallery-slide > span { font-size: 0.625rem; }
   .gallery-counter { font-size: 0.6875rem; }
   .radio-one { right: 91px; }
   .radio-two { right: 53px; }
@@ -284,13 +291,7 @@ p, h1, h2, h3, figure { margin: 0; }
   .main-nav { justify-content: center; flex-wrap: wrap; gap: 0 16px; }
   .main-nav a { min-height: 44px; font-size: 0.75rem; }
   .hero { display: flex; flex-direction: column; align-items: stretch; padding: 25px 8px 17px; gap: 8px; }
-  .hero-copy { align-self: center; width: min(100%, 350px); }
-  .hero h1 { font-size: clamp(2.3125rem, 13.25vw, 3.5rem); letter-spacing: -1.8px; }
-  .hero-handwriting { font-size: 1.5625rem; margin: 6px 0 19px 42px; }
-  .hero-description { font-size: 1rem; margin: 26px 0 20px 5px; line-height: 1.7; }
-  .hero-action { width: 290px; }
-  .button-whatsapp { min-width: 237px; font-size: 1rem; }
-  .hero-action > .doodle-arrow { width: 80px; right: -12px; }
+  .hero-copy { --hero-heading-size: clamp(1.8rem, 11vw, 2.5rem); align-self: center; width: fit-content; max-width: 100%; margin-inline-end: 0; }
   .hero-visual { margin: 8px -8px 0; padding: 12px 10px 25px; min-height: 240px; align-self: stretch; }
   .hero-backdrop { inset: 0 0 5px; border-top-right-radius: 44px; }
   .hero-van { width: 100%; max-width: 440px; margin-inline: auto; }
@@ -316,8 +317,8 @@ p, h1, h2, h3, figure { margin: 0; }
   .postcard-image { padding-block: 8px; }
   .postcard-caption { font-size: 0.6875rem; }
   .schedule-table { font-size: 1rem; }
-  .schedule-table th { font-size: 0.8125rem; padding-block: 9px; }
-  .schedule-table td { padding-block: 12px; }
+  .schedule-table thead th { font-size: 0.8125rem; padding-block: 9px; }
+  .schedule-table td, .schedule-table tbody th { padding-block: 12px; }
   .vacancy-period { padding: 0 10px 8px; }
   .vacancy-period h3 { font-size: 1rem; }
   .vacancy-period strong { font-size: 1.875rem; }
@@ -328,8 +329,6 @@ p, h1, h2, h3, figure { margin: 0; }
   .vacancy-action .arrow-left { left: -9px; }
   .vacancy-action .arrow-right { right: -9px; }
   .gallery-window { border-width: 18px; }
-  .gallery-slide { min-height: 175px; }
-  .gallery-slide > span { font-size: 0.75rem; }
   .gallery-counter { font-size: 0.8125rem; }
   .site-footer { display: flex; flex-wrap: wrap; margin-inline: 16px; padding: 23px 8px; row-gap: 20px; }
   .site-footer > div { flex: 1 1 140px; }
@@ -338,11 +337,6 @@ p, h1, h2, h3, figure { margin: 0; }
   .contact-placeholder p { font-size: 0.875rem; }
 }
 @media (max-width: 360px) {
-  .hero h1 { font-size: 2.1875rem; }
-  .hero-handwriting { font-size: 1.4375rem; margin-left: 25px; }
-  .hero-action { width: 255px; }
-  .hero-action > .doodle-arrow { right: -12px; }
-  .button-whatsapp { min-width: 212px; }
   .panel { padding-inline: 20px; }
   .section-heading { font-size: 1.5rem; }
   .regions-layout { grid-template-columns: 1fr; gap: 20px; }
