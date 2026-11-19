@@ -1,0 +1,5 @@
+<svg width="450" height="115" viewBox="0 0 450 115" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg">
+<!-- As curvas terminam horizontalmente em y=8 e y=14, alinhadas às faixas do cabeçalho. -->
+<path d="M0 0H450V14C409 14 410 101 375 101C349 101 294 99 256 99C231 99 211 109 190 115H0Z" fill="#FFC33A"/>
+<path d="M0 0H450V8C405 8 390 76 320 69C231 53 207 107 198 111C194 113 191 115 187 115H0Z" fill="#0D47A1"/>
+</svg>
