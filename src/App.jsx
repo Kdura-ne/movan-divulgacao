@@ -1,5 +1,13 @@
 import React from 'react';
 
+const WHATSAPP_NUMBER = '+55 11 94390-3253';
+const WHATSAPP_URL = 'https://wa.me/5511943903253';
+
+// Link oficial fixo: sem tokens, scripts externos ou redirecionamento por parâmetros.
+function WhatsAppLink({ children, className = '' }) {
+  return <a className={className} href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" referrerPolicy="no-referrer">{children}<span className="visually-hidden"> (abre em nova aba)</span></a>;
+}
+
 // Componentes de apresentação. A navegação e a galeria usam HTML e CSS.
 function Icon({ name, className = '' }) {
   if (name === 'whatsapp') {
@@ -46,7 +54,7 @@ export default function App() {
             <h1 id="hero-title"><span className="hero-title-first">Segurança</span><span className="hero-title-accent">e confiança</span></h1>
             <p className="hero-handwriting">Para o seu filho</p>
             <p className="hero-description">Transporte escolar com<br />pontualidade e responsabilidade</p>
-            <div className="hero-action"><a className="button button-whatsapp" href="#contato"><Icon name="whatsapp" /> Whatsapp</a></div>
+            <div className="hero-action"><WhatsAppLink className="button button-whatsapp"><Icon name="whatsapp" /> WhatsApp</WhatsAppLink></div>
             <svg className="hero-arrow" viewBox="5 0 63 176" preserveAspectRatio="none" fill="none" aria-hidden="true"><path d="M18 6C70 34 83 115 12 164m0 0 22-5m-22 5 12-20" stroke="currentColor" strokeWidth="2.7" strokeLinecap="round" strokeLinejoin="round" /></svg>
           </div>
           <div className="hero-visual">
@@ -101,7 +109,7 @@ export default function App() {
               <div className="vacancy-period"><h3>Manhã</h3><p><strong>15</strong><span>vagas por turno</span></p></div>
               <div className="vacancy-period afternoon"><h3>Tarde</h3><p><strong>15</strong><span>vagas por turno</span></p></div>
             </div>
-            <div className="vacancy-action"><DoodleArrow className="arrow-left" /><a className="button" href="#contato">Garantir vaga</a><DoodleArrow className="arrow-right" /></div>
+            <div className="vacancy-action"><DoodleArrow className="arrow-left" /><WhatsAppLink className="button">Garantir vaga</WhatsAppLink><DoodleArrow className="arrow-right" /></div>
             <p className="panel-note vacancy-note">Capacidade de referência. Consulte a disponibilidade.</p>
           </section>
 
@@ -122,7 +130,7 @@ export default function App() {
 
       <footer className="site-footer" id="contato" aria-labelledby="contato-title">
         <div><strong id="contato-title">Vamos conversar?</strong><p>Renê</p></div>
-        <div className="contact-placeholder"><Icon name="whatsapp" /><div><span>WhatsApp</span><p>(11) 90000-0000</p></div></div>
+        <WhatsAppLink className="contact-link"><Icon name="whatsapp" /><div><span>WhatsApp</span><p>{WHATSAPP_NUMBER}</p></div></WhatsAppLink>
       </footer>
     </div>
   );

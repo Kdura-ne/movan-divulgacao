@@ -38,7 +38,13 @@ O motorista é Renê. A apresentação foi preenchida com uma descrição do ate
 - Regiões: Jardim Ângela, Jardim Nakamura, Jardim Capela, Jardim Vera Cruz, Parque do Lago e Vila Calu.
 - Turnos escolares de referência: manhã, 07:00–12:00; tarde, 13:30–18:30; noite, 19:00–23:00. A tabela usa entrada e saída da escola; embarques e retornos devem ser combinados conforme cada rota.
 - Vagas: cenário ilustrativo de 15 por turno, com aviso para consultar a disponibilidade. É uma referência da configuração Minibus de 15 passageiros e motorista, e não uma confirmação de lotação ou vagas reais.
-- Telefone placeholder: **(11) 90000-0000**. Os botões **WhatsApp** e **Garantir vaga** continuam levando à área de contato da própria página. Depois de receber um número real, seus destinos podem ser substituídos por um link `https://wa.me/55DDDNUMERO`.
+- WhatsApp de contato: **+55 11 94390-3253**. Os botões **WhatsApp**, **Garantir vaga** e o contato do rodapé abrem `https://wa.me/5511943903253`.
+
+### Integração com WhatsApp
+
+O site usa o recurso oficial de [conversa em um clique](https://faq.whatsapp.com/5913398998672934/?locale=pt_BR), adequado para encaminhar visitantes de uma página estática ao WhatsApp no celular ou na web. O visitante confirma o envio da própria mensagem no WhatsApp.
+
+O endereço HTTPS e o número são fixos em `src/App.jsx`, sem aceitar destinos da URL ou de entradas do visitante. O componente compartilhado `WhatsAppLink` aplica `target="_blank"`, `rel="noopener noreferrer"` e `referrerPolicy="no-referrer"` aos três links. Não há SDK, widget externo, chamadas à API Business ou tokens expostos no navegador. Não é necessário backend para este redirecionamento.
 
 ### Referências dos dados
 

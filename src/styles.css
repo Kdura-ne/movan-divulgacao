@@ -164,20 +164,21 @@ p, h1, h2, h3, figure { margin: 0; }
 .vacancy-note { text-align: center; }
 
 /* Vagas. */
-.vacancies-panel { display: flex; flex-direction: column; justify-content: space-between; padding-bottom: 23px; }
-.vacancies-panel > .section-heading { align-self: flex-start; }
-.vacancies { display: grid; grid-template-columns: 1fr 1fr; margin: 0 0 8px; text-align: center; }
+.vacancies-panel { display: flex; flex-direction: column; justify-content: space-evenly; gap: 20px; padding-block: 32px; }
+.vacancies-panel > .section-heading { align-self: center; font-family: 'Racing Sans One', var(--heading-font); font-size: clamp(1.5rem, 3.2vw, 3rem); font-style: normal; font-weight: 400; line-height: 1.1; letter-spacing: 0; text-align: center; margin-bottom: 8px; }
+.vacancies { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); text-align: center; }
 .vacancy-period { padding: 0 22px 4px; }
 .vacancy-period + .vacancy-period { border-left: 1px solid #ddcfb0; }
-.vacancy-period h3 { display: block; max-width: 130px; margin: 0 auto 14px; padding: 6px 15px; border-radius: 13px; font-size: 1rem; font-style: italic; font-weight: 500; background: var(--yellow-soft); color: #493915; }
+.vacancy-period h3 { display: block; max-width: 240px; margin: 0 auto 12px; padding: 0.35em 0.9em; border-radius: 999px; font-size: clamp(1rem, 1.4vw, 1.35rem); font-style: italic; font-weight: 500; line-height: 1.25; background: var(--yellow-soft); color: #493915; }
 .vacancy-period.afternoon h3 { background: #5881bc; color: #fff; }
-.vacancy-period strong { display: block; font-size: 1.75rem; font-weight: 600; line-height: 1.3; }
-.vacancy-period p span { display: block; max-width: 110px; margin: 3px auto 0; font-size: 0.8125rem; font-weight: 500; line-height: 1.5; }
-.vacancy-action { position: relative; display: flex; align-items: center; justify-content: center; min-height: 87px; padding-top: 20px; }
-.vacancy-action .button { min-width: 200px; min-height: 42px; font-size: 0.875rem; padding-block: 8px; }
-.vacancy-action .doodle-arrow { position: absolute; width: 72px; height: 75px; top: -7px; }
+.vacancy-period strong { display: block; font-family: 'Racing Sans One', var(--heading-font); font-size: clamp(3.5rem, 8.5vw, 6.5rem); font-weight: 400; line-height: 1.05; color: var(--blue); }
+.vacancy-period p span { display: block; margin: 3px auto 0; font-size: clamp(0.875rem, 1.25vw, 1.2rem); font-weight: 500; line-height: 1.5; }
+.vacancy-action { position: relative; display: flex; align-items: center; justify-content: center; padding-top: 10px; }
+.vacancy-action .button { width: 76%; max-width: 560px; min-width: 0; min-height: 56px; padding: 0.65em 1em; border-radius: 999px; font-size: clamp(1rem, 1.75vw, 1.5rem); line-height: 1.4; text-align: center; }
+.vacancy-action .doodle-arrow { position: absolute; width: clamp(48px, 6vw, 110px); height: clamp(64px, 7vw, 120px); top: -12px; }
 .vacancy-action .arrow-left { left: 0; transform: scaleX(-1) rotate(30deg); }
 .vacancy-action .arrow-right { right: 0; transform: rotate(30deg); }
+.vacancies-panel > .vacancy-note { max-width: 40ch; align-self: center; margin-top: 0; }
 
 /* Galeria de fotos: os controles nativos funcionam sem JavaScript. */
 .gallery-panel { position: relative; padding-bottom: 24px; }
@@ -201,15 +202,16 @@ p, h1, h2, h3, figure { margin: 0; }
 .radio-one:not(:checked) ~ .gallery-window .slide-one, .radio-two:not(:checked) ~ .gallery-window .slide-two, .radio-three:not(:checked) ~ .gallery-window .slide-three { visibility: hidden; }
 .gallery-note { min-height: 36px; margin-top: 14px; padding-right: 124px; display: flex; align-items: center; font-size: 0.6875rem; color: #8e8062; }
 
-/* Contato provisório. */
+/* Contato por WhatsApp. */
 .site-footer { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); align-items: center; gap: 24px; margin: 0 30px; padding: 25px 8px 30px; border-top: 1px solid #e8edf4; }
 .site-footer strong { display: block; color: var(--blue); font-weight: 600; font-size: 0.9375rem; }
 .site-footer p { font-size: 0.75rem; line-height: 1.7; }
 .site-footer > div > p { color: #7c8190; margin-top: 4px; }
-.contact-placeholder { display: flex; justify-self: center; align-items: center; gap: 12px; color: var(--blue); }
-.contact-placeholder > .icon { width: 28px; height: 28px; }
-.contact-placeholder span { display: block; font-size: 0.6875rem; }
-.contact-placeholder p { font-size: 1rem; font-weight: 500; }
+.contact-link { display: flex; justify-self: center; align-items: center; gap: 12px; min-height: 44px; color: var(--blue); }
+.contact-link > .icon { width: 28px; height: 28px; }
+.contact-link span { display: block; font-size: 0.6875rem; }
+.contact-link p { font-size: 1rem; font-weight: 500; white-space: nowrap; }
+.contact-link:hover p { text-decoration: underline; text-underline-offset: 4px; }
 
 @media (min-width: 1051px) {
   :root { font-size: 137.5%; }
@@ -236,7 +238,6 @@ p, h1, h2, h3, figure { margin: 0; }
   .section-heading { font-size: 1.5625rem; }
   .gallery-window { border-width: 18px; }
   .vacancy-period { padding-inline: 14px; }
-  .vacancy-action .doodle-arrow { width: 56px; }
 }
 @media (max-width: 1050px) {
   .header-inner { min-height: 175px; padding: 0 22px 10px; flex-wrap: wrap; gap: 6px; }
@@ -269,9 +270,8 @@ p, h1, h2, h3, figure { margin: 0; }
   .postcard-tape { width: 44px; left: calc(50% - 22px); height: 15px; }
   .schedule-table td, .schedule-table tbody th { padding-block: 13px; }
   .vacancy-period { padding-inline: 8px; }
-  .vacancy-period h3 { font-size: 0.875rem; }
-  .vacancy-period p span { font-size: 0.6875rem; }
-  .vacancy-action .button { min-width: 150px; font-size: 0.8125rem; }
+  .vacancy-period h3 { padding-inline: 0.45em; }
+  .vacancy-action .button { width: 86%; padding-inline: 0.6em; white-space: nowrap; }
   .vacancy-action .doodle-arrow { width: 44px; }
   .vacancy-action .arrow-left { left: -14px; }
   .vacancy-action .arrow-right { right: -14px; }
@@ -321,11 +321,7 @@ p, h1, h2, h3, figure { margin: 0; }
   .schedule-table td, .schedule-table tbody th { padding-block: 12px; }
   .vacancy-period { padding: 0 10px 8px; }
   .vacancy-period h3 { font-size: 1rem; }
-  .vacancy-period strong { font-size: 1.875rem; }
-  .vacancy-period p span { font-size: 0.8125rem; }
-  .vacancy-action { min-height: 85px; padding-top: 19px; }
-  .vacancy-action .button { min-width: 185px; font-size: 0.875rem; }
-  .vacancy-action .doodle-arrow { width: 58px; top: -8px; }
+  .vacancy-action .doodle-arrow { width: 42px; height: 70px; top: -14px; }
   .vacancy-action .arrow-left { left: -9px; }
   .vacancy-action .arrow-right { right: -9px; }
   .gallery-window { border-width: 18px; }
@@ -333,8 +329,8 @@ p, h1, h2, h3, figure { margin: 0; }
   .site-footer { display: flex; flex-wrap: wrap; margin-inline: 16px; padding: 23px 8px; row-gap: 20px; }
   .site-footer > div { flex: 1 1 140px; }
   .site-footer strong { font-size: 0.875rem; }
-  .contact-placeholder { gap: 8px; }
-  .contact-placeholder p { font-size: 0.875rem; }
+  .contact-link { gap: 8px; flex: 1 1 240px; }
+  .contact-link p { font-size: 0.875rem; }
 }
 @media (max-width: 360px) {
   .panel { padding-inline: 20px; }
@@ -342,7 +338,6 @@ p, h1, h2, h3, figure { margin: 0; }
   .regions-layout { grid-template-columns: 1fr; gap: 20px; }
   .region-list { font-size: 0.8125rem; }
   .van-postcard { width: 125px; margin: 0 8px 0 auto; }
-  .vacancy-action .button { min-width: 163px; }
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
